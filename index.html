@@ -6,54 +6,94 @@
     <title>Én kicsi weblapom</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Comic+Neue:wght@400;700&display=swap');
+        /* Finomhangolt betűtípusok – jobb vizuális hierarchia és játékosabb hangulat */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Comic+Neue:wght@400;700&amp;family=Fredoka:wght@400;500;600;700&amp;display=swap');
 
         :root {
-            --font-header: 'Playfair Display', serif;
+            --header-font: 'Playfair Display', serif;
+            --body-font: 'Comic Neue', cursive;
+            --accent-font: 'Fredoka', sans-serif;   /* Frissebb, kerekebb, vidámabb kiegészítő */
         }
 
         body {
-            font-family: 'Comic Neue', cursive;
+            font-family: var(--body-font);
             background: #000;
             color: white;
+            line-height: 1.4;
         }
 
         .header-font {
-            font-family: var(--font-header);
+            font-family: var(--header-font);
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+
+        .accent-font {
+            font-family: var(--accent-font);
+            font-weight: 600;
         }
 
         .card {
-            border-radius: 16px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
         }
 
-        .sör-card { border: 4px solid #d97706; }
-        .szerelem-card { border: 4px solid #e11d48; }
-        .horoszkop-card { border: 4px solid #7e22ce; }
+        .sör-card { border: 5px solid #d97706; }
+        .szerelem-card { border: 5px solid #e11d48; }
+        .horoszkop-card { border: 5px solid #7e22ce; }
 
-        .title-sör { color: #fcd34d; }
-        .title-szerelem { color: #fda4af; }
-        .title-horoszkop { color: #c4b5fd; }
+        .title-sör { 
+            font-family: var(--accent-font);
+            color: #fcd34d; 
+            font-size: 2.4rem;
+            letter-spacing: 1px;
+        }
+        .title-szerelem { 
+            font-family: var(--accent-font);
+            color: #fda4af; 
+            font-size: 2.4rem;
+        }
+        .title-horoszkop { 
+            font-family: var(--accent-font);
+            color: #c4b5fd; 
+            font-size: 2.25rem;
+            letter-spacing: 1.5px;
+        }
 
         .input-field {
             background-color: #111;
-            border: 2px solid #f472b6;
+            border: 3px solid #f472b6;
             color: white;
+            font-family: var(--body-font);
+            font-size: 1.25rem;
+        }
+
+        .button {
+            font-family: var(--accent-font);
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .popup-text {
-            text-shadow: 3px 3px 0 #000,
-                        -3px -3px 0 #000,
-                        3px -3px 0 #000,
-                        -3px 3px 0 #000;
+            font-family: var(--accent-font);
+            text-shadow: 4px 4px 0 #000,
+                        -4px -4px 0 #000,
+                        4px -4px 0 #000,
+                        -4px 4px 0 #000;
+            font-weight: 700;
+            line-height: 1.05;
+        }
+
+        .result-text {
+            font-family: var(--accent-font);
         }
     </style>
 </head>
-<body class="min-h-screen pb-12">
+<body class="min-h-screen pb-16">
 
     <!-- HEADER -->
-    <div class="bg-black py-10 border-b-4 border-pink-500 text-center">
+    <div class="bg-black py-12 border-b-4 border-pink-500 text-center">
         <h1 class="header-font text-6xl md:text-7xl tracking-tighter text-pink-300">Én kicsi weblapom</h1>
         <p class="mt-6 text-xl md:text-2xl max-w-3xl mx-auto px-6 leading-relaxed">
             Üdvözöllek a végtelenül hasznos weblapomon, ahol<br>
@@ -69,8 +109,8 @@
 
             <!-- SÖR GENERÁTOR -->
             <div class="sör-card bg-zinc-900 card">
-                <div class="bg-gradient-to-r from-amber-800 to-orange-900 p-6 text-center">
-                    <h2 class="text-4xl font-bold tracking-widest title-sör">IGYAK-E MA SÖRT?</h2>
+                <div class="bg-gradient-to-r from-amber-800 to-orange-900 p-7 text-center">
+                    <h2 class="title-sör">IGYAK-E MA SÖRT?</h2>
                     <p class="text-amber-200 text-xl mt-1">generátor</p>
                 </div>
                 
@@ -78,9 +118,9 @@
                 <div id="beer-image" class="relative h-80 bg-cover bg-center"
                      style="background-image: url('https://picsum.photos/id/1015/800/400');">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
+                    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-center">
                         <button onclick="generateBeer()" 
-                                class="bg-black text-white px-8 py-3 rounded-full font-bold text-lg border border-amber-400 hover:bg-amber-600 transition">
+                                class="button bg-black hover:bg-amber-600 text-white px-10 py-4 rounded-2xl text-xl border-2 border-amber-400 transition">
                             kattints, és megtudod!
                         </button>
                     </div>
@@ -89,16 +129,16 @@
                 <div class="p-8 text-center">
                     <div id="beer-result" class="hidden">
                         <p class="text-white/70 text-xl">válasz:</p>
-                        <p id="beer-answer" class="text-6xl font-bold text-amber-400 mt-3"></p>
+                        <p id="beer-answer" class="result-text text-7xl font-bold text-amber-400 mt-4"></p>
                     </div>
                 </div>
             </div>
 
             <!-- SZERELEM KALKULÁTOR -->
             <div class="szerelem-card bg-zinc-900 card">
-                <div class="bg-gradient-to-r from-red-800 to-pink-900 p-6 text-center">
-                    <h2 class="text-4xl font-bold tracking-widest title-szerelem">SZERELEM</h2>
-                    <p class="text-3xl text-pink-200">KALKULÁTOR</p>
+                <div class="bg-gradient-to-r from-red-800 to-pink-900 p-7 text-center">
+                    <h2 class="title-szerelem">SZERELEM</h2>
+                    <p class="text-pink-200 text-3xl">KALKULÁTOR</p>
                 </div>
                 
                 <!-- Cserélhető háttérkép: Szív -->
@@ -109,24 +149,20 @@
 
                 <div class="p-8">
                     <div class="space-y-6">
-                        <div>
-                            <input id="name1" type="text" placeholder="első név:" 
-                                   class="input-field w-full px-6 py-4 rounded-2xl text-xl focus:outline-none focus:border-pink-500">
-                        </div>
-                        <div>
-                            <input id="name2" type="text" placeholder="második név:" 
-                                   class="input-field w-full px-6 py-4 rounded-2xl text-xl focus:outline-none focus:border-pink-500">
-                        </div>
+                        <input id="name1" type="text" placeholder="első név:" 
+                               class="input-field w-full px-6 py-5 rounded-2xl focus:outline-none focus:border-pink-500">
+                        <input id="name2" type="text" placeholder="második név:" 
+                               class="input-field w-full px-6 py-5 rounded-2xl focus:outline-none focus:border-pink-500">
                     </div>
 
                     <button onclick="calculateLove()" 
-                            class="mt-8 w-full bg-black hover:bg-pink-600 border-2 border-pink-400 text-white font-bold py-5 rounded-2xl text-xl transition">
+                            class="button mt-8 w-full bg-black hover:bg-pink-600 border-2 border-pink-400 text-white py-6 rounded-2xl text-2xl transition">
                         számolj!
                     </button>
 
-                    <div id="love-result" class="hidden mt-8 text-center">
+                    <div id="love-result" class="hidden mt-10 text-center">
                         <p class="text-pink-200 text-xl">esély a szerelemre:</p>
-                        <p id="love-percentage" class="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300 mt-2"></p>
+                        <p id="love-percentage" class="result-text text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300 mt-3"></p>
                     </div>
                 </div>
             </div>
@@ -134,8 +170,8 @@
 
         <!-- HOROSZKÓP -->
         <div class="mt-12 horoszkop-card bg-zinc-900 card">
-            <div class="bg-gradient-to-r from-purple-800 to-indigo-900 p-6 text-center">
-                <h2 class="text-4xl font-bold tracking-widest title-horoszkop">MILYEN LESZ A HETED HOROSZKÓPOD SZERINT?</h2>
+            <div class="bg-gradient-to-r from-purple-800 to-indigo-900 p-7 text-center">
+                <h2 class="title-horoszkop">MILYEN LESZ A HETED HOROSZKÓPOD SZERINT?</h2>
             </div>
             
             <!-- Cserélhető háttérkép: Horoszkóp -->
@@ -145,9 +181,9 @@
             </div>
 
             <div class="p-8">
-                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                <div class="flex flex-col sm:flex-row gap-4">
                     <select id="zodiac-select" 
-                            class="flex-1 bg-black border-2 border-purple-400 rounded-2xl px-6 py-5 text-xl focus:outline-none">
+                            class="flex-1 bg-black border-3 border-purple-400 rounded-2xl px-7 py-6 text-2xl focus:outline-none accent-font">
                         <option value="">a horoszkópod:</option>
                         <option value="kos">Kos</option>
                         <option value="bika">Bika</option>
@@ -164,33 +200,32 @@
                     </select>
                     
                     <button onclick="getHoroscope()" 
-                            class="bg-black border-2 border-purple-400 hover:bg-purple-600 px-10 py-5 rounded-2xl font-bold text-xl transition whitespace-nowrap">
+                            class="button bg-black border-3 border-purple-400 hover:bg-purple-700 px-12 py-6 rounded-2xl text-2xl whitespace-nowrap transition">
                         mondd meg!
                     </button>
                 </div>
 
                 <div id="horoscope-result" class="hidden mt-10">
-                    <p class="text-white/70">válasz:</p>
-                    <p id="horoscope-adj" class="text-6xl font-bold text-red-500 mt-2"></p>
-                    <p id="horoscope-summary" class="mt-6 text-lg leading-relaxed text-white/90"></p>
+                    <p class="text-white/70 text-xl">válasz:</p>
+                    <p id="horoscope-adj" class="result-text text-6xl font-bold text-red-500 mt-3"></p>
+                    <p id="horoscope-summary" class="mt-7 text-xl leading-relaxed text-white/90"></p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- LÁBLÉC -->
-    <div class="text-center mt-20 text-white/40 text-lg">
+    <div class="text-center mt-20 text-white/40 text-xl">
         Ez itt a lábléc.
     </div>
 
-    <!-- POP-UP (pontosan a stílusod szerint) -->
+    <!-- POP-UP -->
     <div id="popup" onclick="if(event.target===this) closePopup()" 
          class="hidden fixed inset-0 bg-black/95 z-[10000] flex items-center justify-center">
         
         <div onclick="event.stopImmediatePropagation()" 
              class="relative max-w-md w-full mx-4 bg-white rounded-3xl overflow-hidden shadow-2xl">
 
-            <!-- Bezáró gomb -->
             <button onclick="closePopup()" 
                     class="absolute top-4 right-4 text-5xl font-black text-black hover:text-red-500 z-20">×</button>
 
@@ -198,11 +233,11 @@
             <img id="popup-image" src="https://picsum.photos/id/1027/600/700" 
                  class="w-full h-auto" alt="Magányos anyukák">
 
-            <!-- Overlay szövegek pontosan a képed szerint -->
-            <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-8 pt-10">
-                <p class="popup-text text-5xl md:text-6xl text-pink-500 leading-none">Magányos anyukák</p>
-                <p class="popup-text text-5xl md:text-6xl text-pink-500 leading-none mt-2">csak <span class="text-red-600">RÁD</span> várnak!!!</p>
-                <p class="popup-text text-4xl md:text-5xl text-blue-600 mt-10">csak <span class="text-red-600">RÁD</span> várnak!!!</p>
+            <!-- Overlay szövegek -->
+            <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-8 pt-12">
+                <p class="popup-text text-5xl md:text-6xl text-pink-500">Magányos anyukák</p>
+                <p class="popup-text text-5xl md:text-6xl text-pink-500 mt-1">csak <span class="text-red-600">RÁD</span> várnak!!!</p>
+                <p class="popup-text text-4xl md:text-5xl text-blue-600 mt-12">csak <span class="text-red-600">RÁD</span> várnak!!!</p>
             </div>
         </div>
     </div>
@@ -234,7 +269,7 @@
             document.getElementById("love-result").classList.remove("hidden");
         }
 
-        // Horoszkóp adatok (unhinged)
+        // Horoszkóp
         const horoscopeDB = {
             kos:     { adj: "KEGYETLEN!",     sum: "A heted olyan szar lesz, hogy azt kívánod majd bár meg sem születtél volna." },
             bika:    { adj: "SZÖRNYŰ!",       sum: "Minden terv szétcsúszik, a pénz elszáll, és a barátaid is lelépnek." },
@@ -246,7 +281,7 @@
             skorpio: { adj: "INTENZÍV SZAR!", sum: "A bosszúd visszaüt, a titkaid kiderülnek, pokoli hét jön." },
             nyilas:  { adj: "NYOMORULT!",     sum: "A kalandjaid kudarcba fulladnak, csak unalom és balszerencse." },
             bak:     { adj: "KEMÉNY!",        sum: "Karriered megreked, a főnök szid, semmi haladás, csak szenvedés." },
-            vizonto:{ adj: "FURCSA SZAR!",   sum: "Az ötleteid hülyeségnek tűnnek, a jövőbeli álmaid szétbaszódnak." },
+            vizonto: { adj: "FURCSA SZAR!",   sum: "Az ötleteid hülyeségnek tűnnek, a jövőbeli álmaid szétbaszódnak." },
             halak:   { adj: "ÉRZÉKENY KÁR!",  sum: "Álmodozás helyett csak csalódás és könnyek, a valóság arcon csap." }
         };
 
@@ -262,7 +297,7 @@
             document.getElementById("horoscope-result").classList.remove("hidden");
         }
 
-        // Pop-up időzítés (10–30 másodperc)
+        // Pop-up
         let popupTimer = null;
 
         function showPopup() {
@@ -278,16 +313,13 @@
 
         function scheduleNextPopup() {
             if (popupTimer) clearTimeout(popupTimer);
-            const delay = Math.floor(Math.random() * 21000) + 10000; // 10-30 mp
+            const delay = Math.floor(Math.random() * 21000) + 10000;
             popupTimer = setTimeout(showPopup, delay);
         }
 
-        // Oldal betöltése
         window.onload = function() {
             scheduleNextPopup();
-            
-            // Segítség: cseréld ki az URL-eket a saját képeidre
-            console.log("%c✅ Weblap kész! Cseréld a képeket a style background-image és az img src attribútumokban.", 
+            console.log("%c✅ Finomhangolt verzió kész! Betűtípusok: Playfair Display (header) + Comic Neue + Fredoka (címek & gombok).", 
                         "color: #ec4899; font-size: 16px; font-weight: bold");
         };
     </script>
